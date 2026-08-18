@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoséLoop | روزية لوب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-deep:#E3367F;
+    --pink-soft:#E7848E;
+    --bg:#FDF6F8;
+    --bg-card:#FFFFFF;
+    --ink:#3A2530;
+    --ink-soft:#8B6E76;
+    --line:#F3D9E1;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background: radial-gradient(circle at 20% 0%, #FFF0F4 0%, var(--bg) 45%);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:48px 20px 32px;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* decorative loop thread across background */
+  .thread-bg{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.5;
+  }
+  .thread-bg svg{width:100%; height:100%;}
+
+  .page{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .logo-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:8px;
+    opacity:0;
+    animation: riseIn 0.7s ease-out forwards;
+  }
+  .logo-wrap img{
+    width:190px;
+    height:auto;
+    filter: drop-shadow(0 8px 20px rgba(227,54,127,0.15));
+  }
+
+  .tagline{
+    font-size:13px;
+    color:var(--ink-soft);
+    letter-spacing:0.5px;
+    margin-top:2px;
+    margin-bottom:36px;
+    opacity:0;
+    animation: riseIn 0.7s ease-out 0.15s forwards;
+  }
+
+  .links{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .link-card{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    padding:16px 20px;
+    background:var(--bg-card);
+    border:1.5px solid var(--line);
+    border-radius:18px;
+    text-decoration:none;
+    color:var(--ink);
+    font-weight:600;
+    font-size:16px;
+    box-shadow:0 2px 10px rgba(227,54,127,0.05);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    opacity:0;
+    animation: riseIn 0.6s ease-out forwards;
+    overflow:hidden;
+  }
+  .link-card:nth-of-type(1){animation-delay:0.28s;}
+  .link-card:nth-of-type(2){animation-delay:0.38s;}
+  .link-card:nth-of-type(3){animation-delay:0.48s;}
+  .link-card:nth-of-type(4){animation-delay:0.58s;}
+
+  .link-card:active{transform:scale(0.98);}
+  .link-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(227,54,127,0.16);
+    border-color:var(--pink-soft);
+  }
+
+  .link-card .icon{
+    flex-shrink:0;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, var(--pink-deep), var(--pink-soft));
+    color:#fff;
+  }
+  .link-card .icon svg{width:22px; height:22px;}
+
+  .link-text{display:flex; flex-direction:column; gap:2px;}
+  .link-text .label{font-size:16px; font-weight:700;}
+  .link-text .sub{font-size:12.5px; color:var(--ink-soft); font-weight:500;}
+
+  .link-card .arrow{
+    margin-inline-start:auto;
+    color:var(--pink-soft);
+    flex-shrink:0;
+  }
+
+  /* store card gets a subtle featured style */
+  .link-card.store{
+    background:linear-gradient(135deg, #FFF5F8, #FFFFFF);
+    border-color:var(--pink-deep);
+  }
+
+  footer{
+    margin-top:44px;
+    text-align:center;
+    opacity:0;
+    animation: riseIn 0.6s ease-out 0.7s forwards;
+  }
+  footer .heart-divider{
+    width:60px;
+    height:14px;
+    margin:0 auto 14px;
+    color:var(--pink-soft);
+  }
+  footer p{
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.3px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .logo-wrap, .tagline, .link-card, footer{
+      animation:none !important;
+      opacity:1 !important;
+      transform:none !important;
+    }
+  }
+
+  a:focus-visible, .link-card:focus-visible{
+    outline:2.5px solid var(--pink-deep);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="thread-bg" aria-hidden="true">
+  <svg viewBox="0 0 400 900" preserveAspectRatio="none">
+    <path d="M -20 120 C 80 90, 120 180, 200 150 S 340 90, 420 140"
+          fill="none" stroke="#E7848E" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M -20 780 C 60 820, 140 740, 220 790 S 340 850, 420 800"
+          fill="none" stroke="#E3367F" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<div class="page">
+
+  <div class="logo-wrap">
+    <img src="roseloop-logo.jpeg" alt="RoséLoop - روزية لوب">
+  </div>
+  <p class="tagline">تسوقي حياكتك المفضلة 🧶</p>
+
+  <nav class="links">
+
+    <a class="link-card store" href="https://salla.sa/roseloop" target="_blank" rel="noopener">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </span>
+      <span class="link-text">
+        <span class="label">متجرنا في سلة</span>
+        <span class="sub">تصفحي واطلبي منتجاتنا</span>
+      </span>
+      <span class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17 6 12l5-5"/></svg>
+      </span>
+    </a>
+
+    <a class="link-card" href="https://www.tiktok.com/@roseloop3" target="_blank" rel="noopener">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-3.14-1.4A4.34 4.34 0 0 1 12.3 2h-3.1v14.06a2.5 2.5 0 1 1-1.77-2.39V10.4a5.66 5.66 0 1 0 4.87 5.6V9.15a7.4 7.4 0 0 0 4.3 1.38V7.36a4.3 4.3 0 0 1-.1-1.54Z"/></svg>
+      </span>
+      <span class="link-text">
+        <span class="label">تيك توك</span>
+        <span class="sub">roseloop3@</span>
+      </span>
+      <span class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17 6 12l5-5"/></svg>
+      </span>
+    </a>
+
+    <a class="link-card" href="https://wa.me/9660590891861" target="_blank" rel="noopener">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.92C21.96 6.45 17.51 2 12.04 2Zm5.8 14.1c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.91-1.26-4.81-4.19-4.96-4.39-.14-.2-1.19-1.58-1.19-3.02s.75-2.14 1.02-2.44c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.32.02.51-.09.2-.14.32-.28.49-.14.17-.29.38-.42.51-.14.14-.28.29-.12.57.16.29.71 1.18 1.53 1.92 1.05.94 1.94 1.24 2.22 1.38.29.14.45.12.62-.07.17-.2.71-.83.9-1.11.19-.29.38-.24.63-.15.26.1 1.65.78 1.94.92.28.14.47.21.53.33.07.12.07.68-.17 1.36Z"/></svg>
+      </span>
+      <span class="link-text">
+        <span class="label">واتساب</span>
+        <span class="sub">059 089 1861</span>
+      </span>
+      <span class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17 6 12l5-5"/></svg>
+      </span>
+    </a>
+
+  </nav>
+
+  <footer>
+    <svg class="heart-divider" viewBox="0 0 60 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 7 C10 2, 15 2, 22 6 C24 -1, 33 -1, 30 7 C33 -1, 24 -1, 22 6 C15 2, 10 2, 0 7 C10 12, 15 12, 22 8 C24 15, 33 15, 30 7 C33 15, 24 15, 22 8 C15 12, 10 12, 0 7 Z"
+        stroke="currentColor" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <path d="M40 7h20" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-dasharray="1 4"/>
+      <path d="M0 7h20" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-dasharray="1 4"/>
+    </svg>
+    <p>RoséLoop © روزية لوب</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
